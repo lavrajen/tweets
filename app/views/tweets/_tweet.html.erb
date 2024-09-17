@@ -1,0 +1,6 @@
+<div class="mb-3 card card-body">
+    <%= tweet.body %>
+    <%# The l is a helper method for 'localisation', it helps for formatting %>
+    Posted at: <%= l tweet.updated_at, format: :short %>
+    <%= link_to "Edit Tweet", edit_tweet_path(tweet) %>
+</div>

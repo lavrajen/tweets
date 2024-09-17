@@ -1,0 +1,13 @@
+<h1>Post A Tweet</h1>
+
+<%= form_with model: @tweet do |form| %>
+    
+    <%= render "shared/form_errors", form: form %>
+
+    <div class="mb-3">
+        <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+    <%= form.button "Post", class: "btn btn-primary" %>
+
+<% end %>

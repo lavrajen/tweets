@@ -1,0 +1,30 @@
+<h1>Sign Up</h1>
+
+<%# The turbo false option means that the Turbo Drive function is being turned off so that the whole webpage renders again %> 
+<%= form_with model: @user, data: { turbo: false }, url: sign_up_path do |form| %>
+<%# Print all the errors out on the page when it renders again %>
+<% if @user.errors.any? %>
+    <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+        </div>
+    <% end %>
+<div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "example@gmail.com" %>
+</div>
+<div class="mb-3">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+</div>
+<div class="mb-3">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
+</div>
+<div class="mb-3">
+    <%# Has a default string of Create User due to the table name %>
+    <%= form.submit %>
+</div>
+<%end %>
+

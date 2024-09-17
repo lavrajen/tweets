@@ -1,0 +1,30 @@
+<h1>Edit Password</h1>
+
+<%# The turbo false option means that the Turbo Drive function is being turned off so that the whole webpage renders again %> 
+<%= form_with model: Current.user, data: { turbo: false }, url: edit_password_path do |form| %>
+<%# Print all the errors out on the page when it renders again %>
+
+<%# The object of the form is the Current.user which is set at the beginning of the form %>
+<% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+        <% form.object.errors.full_messages.each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <% end %>
+
+<div class="mb-3">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
+</div>
+
+<div class="mb-3">
+    <%# Has a default string of Create User due to the table name %>
+    <%= form.submit "Update Password" %>
+</div>
+<%end %>

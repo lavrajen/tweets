@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h1>My Tweets</h1>
+
+    <% if Current.user.present? %>
+        <%= link_to "Post a Tweet", new_tweet_path, class: "btn btn-primary" %>
+    <% end %>
+</div>
+
+<% if !Current.user.present? %>
+    <%= link_to "Log In", "/sign_in", class: "btn btn-primary" %>
+<% end %>
+
+<%# Rails automatically looks for _tweet.html.erb in the same folder as this file %>
+<%= render @tweets %>
