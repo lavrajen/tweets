@@ -1,3 +1,24 @@
 <h1>Account </h1>
 
 <%= button_to "Edit Password", edit_password_path, method: :get, class: "btn btn-outline-primary" %>
+
+
+
+<% if Current.user.profile_picture.attached? %>
+  <%= image_tag rails_blob_path(Current.user.profile_picture, disposition: "attachment"), alt: "Profile Picture" %>
+  <%
+=begin%>
+ <p>Image URL: <%= rails_blob_path(Current.user.profile_picture, disposition: "attachment") %></p> 
+<%
+=end%>
+<% else %>
+  <p>No image attached</p>
+<% end %>
+
+<%= form_with model: @user, url: update_profile_picture_path, method: :patch do |form| %>
+  <div class="field">
+    <%= form.label :profile_picture %>
+    <%= form.file_field :profile_picture %>
+  </div>
+<%end %>
+

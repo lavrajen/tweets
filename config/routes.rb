@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   get "account" => "account#index"
 
+  patch "update_profile_picture" => "account#update_profile_picture"
+
   # This automatically maps to tweet actions such as new, edit and delete
   resources :tweets
 
