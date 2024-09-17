@@ -11,4 +11,4 @@
 <% end %>
 
 <%# Rails automatically looks for _tweet.html.erb in the same folder as this file %>
-<%= render @tweets %>
+<%= render partial: 'tweets/tweet', collection: @tweets %>

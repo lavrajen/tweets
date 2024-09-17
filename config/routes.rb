@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get "/auth/twitter/callback" => "omniauth"
 
+  get "account" => "account#index"
+
   # This automatically maps to tweet actions such as new, edit and delete
   resources :tweets
 
