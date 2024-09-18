@@ -3,11 +3,17 @@
 <div class="mb-3 card card-body">
   <% if tweet.user.profile_picture.present? %>
     <div class="mr-3">
-      <%= image_tag tweet.user.profile_picture.variant(resize_to_fill: [50, 50]), width: 50, height: 50, alt: "Profile Picture", class: "rounded-circle" %>
+      <%# image_tag tweet.user.profile_picture.variant(resize_to_fill: [50, 50]), width: 50, height: 50, alt: "Profile Picture", class: "rounded-circle" %>
     </div>
   <% end %>
-  <div>
+  <div class="d-flex justify-content-between align-items-center">
+    <% if tweet.user.profile_picture.present? %>
+    <%= image_tag tweet.user.profile_picture.variant(resize_to_fill: [100, 100]), width: 100, height: 100, alt: "Profile Picture", class: "rounded-circle" %>
+  <% else %>
+    <%= image_tag "default.jpeg", width: 100, height: 100, alt: "Default Profile Picture", class: "rounded-circle" %>
+  <% end %>
     <%= tweet.body %>
     <small class="text-muted">Posted at: <%= l tweet.updated_at, format: :short %></small>
+     <%= link_to "Unfollow", new_tweet_path, class: "btn btn-danger justify-content-end" %>
   </div>
 </div>

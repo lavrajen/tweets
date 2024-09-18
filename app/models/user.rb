@@ -9,5 +9,8 @@ class User < ApplicationRecord
 
   validates :password_digest, presence: true
   has_one_attached :profile_picture
+  # has_one_attached :profile_picture do |attachable|
+  #   attachable.variant :default
+  # end
   has_many :tweets
 end
