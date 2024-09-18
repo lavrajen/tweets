@@ -8,10 +8,10 @@
 
 <%= render partial: 'main/tweet', collection: @alltweets %>
 
-<h1> Following </h1>
+<h1> Suggested Followers... </h1>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-<% @allusers.each do |user| %>
+<% @users_not_followed.each do |user| %>
 <div class="col">
 <div class="card" style="width: 18rem;">
   <div class="card-body">
@@ -25,7 +25,6 @@
 </div>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <%= button_to "Follow", follow_path(user_id: user.id), method: :post, remote: true, class: "btn btn-primary follow-button", data: { user_id: user.id } %>
-    <%= user.id %>
   </div>
 </div>
 </div>

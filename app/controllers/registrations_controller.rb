@@ -8,7 +8,6 @@ class RegistrationsController < ApplicationController
     # Can't have multiple renders so commented the line out
     # render plain: params[:user]
     # This line below just prints it in the console
-    puts "#{params[:user]} here"
 
     @user = User.new(user_params)
     if @user.save
