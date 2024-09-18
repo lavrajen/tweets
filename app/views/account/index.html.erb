@@ -4,21 +4,18 @@
 
 
 
-<% if Current.user.profile_picture.attached? %>
-  <%= image_tag rails_blob_path(Current.user.profile_picture, disposition: "attachment"), alt: "Profile Picture" %>
-  <%
-=begin%>
- <p>Image URL: <%= rails_blob_path(Current.user.profile_picture, disposition: "attachment") %></p> 
-<%
-=end%>
-<% else %>
-  <p>No image attached</p>
-<% end %>
-
-<%= form_with model: @user, url: update_profile_picture_path, method: :patch do |form| %>
+<%= form_with model: Current.user, url: update_profile_picture_path, multipart: true, method: :patch do |form| %>
   <div class="field">
     <%= form.label :profile_picture %>
     <%= form.file_field :profile_picture %>
+    <%= form.submit %>
   </div>
 <%end %>
+
+<% if Current.user.profile_picture.attached? %>
+  <%= image_tag Current.user.profile_picture.variant(resize_to_fill: [100, 100]), width: 100, height: 100, alt: "Profile Picture", class: "rounded-circle" %>
+ 
+<% else %>
+  <p>No image attached</p>
+<% end %>
 
