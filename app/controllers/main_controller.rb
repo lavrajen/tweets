@@ -9,5 +9,6 @@ class MainController < ApplicationController
       # using find_by instead of find means that the rails app will not crash when the user can't be found
       @user = User.find_by(id: session[:user_id])
     end
+    @followees = @user.followees
   end
 end

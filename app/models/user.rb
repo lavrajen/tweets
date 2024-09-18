@@ -9,8 +9,13 @@ class User < ApplicationRecord
 
   validates :password_digest, presence: true
   has_one_attached :profile_picture
-  # has_one_attached :profile_picture do |attachable|
-  #   attachable.variant :default
-  # end
+ 
   has_many :tweets
+
+  has_many :followed_users, foreign_key: :follower_id, class_name: "Relationship"
+  has_many :followees, through: :followed_users
+
+  has_many :following_users, foreign_key: :followee_id, class_name: "Relationship"
+  has_many :followers, through: :following_users
+
 end

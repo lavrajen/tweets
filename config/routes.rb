@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   patch "update_profile_picture" => "account#update_profile_picture"
 
+  post "follow" => "relationship#new"
+
   # This automatically maps to tweet actions such as new, edit and delete
   resources :tweets
 
