@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   post "follow" => "relationship#new"
 
+  delete "follow" => "relationship#delete"
+
   # This automatically maps to tweet actions such as new, edit and delete
   resources :tweets
 

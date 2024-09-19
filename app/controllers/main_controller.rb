@@ -11,7 +11,7 @@ class MainController < ApplicationController
     end
     @allusers = User.all
     @followees = @user.followees
-    @users_not_followed = User.where.not(id: @followees)
+    @users_not_followed = User.where.not(id: @followees).where.not(id: @user)
     @alltweets = Tweet.where(user: @user.followees).order(created_at: :desc)
 
   end

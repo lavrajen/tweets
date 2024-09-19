@@ -1,9 +1,5 @@
 <div class="d-flex justify-content-between align-items-center">
     <h1>My Timeline</h1>
-
-<% if Current.user.present? %>
-        <%= link_to "Following", new_tweet_path, class: "btn btn-primary" %>
-    <% end %>
 </div>
 
 <%= render partial: 'main/tweet', collection: @alltweets %>
@@ -23,8 +19,9 @@
     <%= image_tag "default.jpeg", width: 100, height: 100, alt: "Default Profile Picture", class: "rounded-circle" %>
   <% end %>
 </div>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div>
     <%= button_to "Follow", follow_path(user_id: user.id), method: :post, remote: true, class: "btn btn-primary follow-button", data: { user_id: user.id } %>
+  </div>
   </div>
 </div>
 </div>

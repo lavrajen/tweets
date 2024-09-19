@@ -7,7 +7,6 @@ class AccountController < ApplicationController
 
   def update_profile_picture
     @user = Current.user
-    puts "Here"
 
     @user.assign_attributes(user_params)
     if @user.save
@@ -23,6 +22,5 @@ class AccountController < ApplicationController
   private 
   def user_params
     user_params = params.require(:user).permit(:profile_picture)
-    user_params
   end
 end

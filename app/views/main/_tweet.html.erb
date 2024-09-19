@@ -15,6 +15,6 @@
     <%= tweet.body %>
    </div>
     <small class="text-muted">Posted at: <%= l tweet.updated_at, format: :short %></small>
-     <%= link_to "Unfollow", new_tweet_path, class: "btn btn-danger justify-content-end" %>
+     <%= button_to "Unfollow", follow_path(user_id: tweet.user.id), method: :delete, remote: true, class: "btn btn-danger justify-content-endn", data: { user_id: tweet.user.id } %>
   </div>
 </div>
