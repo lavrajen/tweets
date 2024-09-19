@@ -1,13 +1,18 @@
+
 <div class="mb-3 card card-body">
-    <div class="mr-3">
-      <% if tweet.user.profile_picture.present? %>
+  <div class="d-flex justify-content-between align-items-center">
+    <% if tweet.user.profile_picture.present? %>
     <%= image_tag tweet.user.profile_picture.variant(resize_to_fill: [100, 100]), width: 100, height: 100, alt: "Profile Picture", class: "rounded-circle" %>
   <% else %>
     <%= image_tag "default.jpeg", width: 100, height: 100, alt: "Default Profile Picture", class: "rounded-circle" %>
   <% end %>
-    </div>
+   <div>
+    <%= tweet.user.email %>
+   </div>
+
+   <div>
     <%= tweet.body %>
-    <%# The l is a helper method for 'localisation', it helps for formatting %>
-    Posted at: <%= l tweet.updated_at, format: :short %>
-    <%= link_to "Edit Tweet", edit_tweet_path(tweet) %>
+   </div>
+    <small class="text-muted">Posted at: <%= l tweet.updated_at, format: :short %></small>
+  </div>
 </div>

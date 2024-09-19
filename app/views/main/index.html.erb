@@ -5,7 +5,9 @@
 <%= render partial: 'main/tweet', collection: @alltweets %>
 
 <h1> Suggested Followers... </h1>
-
+<% if !Current.user.present? %>
+    <% @users_not_followed = User.all %>
+<% end %>
 <div class="row row-cols-1 row-cols-md-3 g-4">
 <% @users_not_followed.each do |user| %>
 <div class="col">

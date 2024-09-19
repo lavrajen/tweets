@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get "/auth/twitter/callback" => "omniauth"
 
   get "account" => "account#index"
+  delete "account" => "account#delete"
 
   patch "update_profile_picture" => "account#update_profile_picture"
 

@@ -5,6 +5,14 @@ class AccountController < ApplicationController
     @user = Current.user
   end
 
+  def delete
+    @user = Current.user
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'Account deleted successfully.'
+    flash[:notice] = 'Account deleted successfully.'
+  end
+
   def update_profile_picture
     @user = Current.user
 
